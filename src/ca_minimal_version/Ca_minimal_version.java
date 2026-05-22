@@ -29,9 +29,8 @@ public class Ca_minimal_version {
       System.out.println("1 - Manage Services");
       System.out.println("x - Quit");
       System.out.println("....................");
-      System.out.print("Option: ");
 
-      option = readString();
+      option = readString("Option: ");
 
       switch (option) {
         case "1" -> serviceMenu();
@@ -55,9 +54,8 @@ public class Ca_minimal_version {
       System.out.println("5 - Delete service by ID");
       System.out.println("x - Back to main menu");
       System.out.println("....................");
-      System.out.print("Option: ");
 
-      option = readString();
+      option = readString("Option: ");
 
       switch (option) {
 
@@ -94,8 +92,7 @@ public class Ca_minimal_version {
   }
 
   public static void showOneServiceById() {
-    System.out.print("Service ID: ");
-    int serviceID = readInt();
+    int serviceID = readInt("Service ID: ");
 
     String sql = "SELECT * FROM service_details WHERE service_id = ?;";
 
@@ -123,10 +120,8 @@ public class Ca_minimal_version {
   }
 
   public static void createNewService() {
-    System.out.print("Service name: ");
-    String serviceName = readString();
-    System.out.print("Service charge: ");
-    double serviceCharge = readDouble();
+    String serviceName = readString("Service name: ");
+    double serviceCharge = readDouble("Service charge: ");
 
     String sql = "INSERT INTO service_details (service_name, service_charge) VALUES (?, ?);";
 
@@ -144,10 +139,8 @@ public class Ca_minimal_version {
   }
 
   public static void updateServiceNameById() {
-    System.out.print("Service ID: ");
-    int serviceId =  readInt();
-    System.out.print("Service name: ");
-    String serviceName = readString();
+    int serviceId =  readInt("Service ID: ");
+    String serviceName = readString("Service name: ");
 
     String sql = "UPDATE service_details SET service_name = ? WHERE service_id = ?";
 
@@ -164,8 +157,7 @@ public class Ca_minimal_version {
   }
 
   public static void deleteServiceById() {
-    System.out.print("Service ID: ");
-    int serviceId =  readInt();
+    int serviceId =  readInt("Service ID: ");
 
     String sql = "DELETE FROM service_details WHERE service_id = ?";
 
@@ -180,13 +172,15 @@ public class Ca_minimal_version {
     }
   }
 
-  public static String readString() {
+  public static String readString(String label) {
+    System.out.print(label);
     String value = myKB.nextLine();
     return value.trim();
   }
 
-  public static int readInt() {
+  public static int readInt(String label) {
     while(true) {
+      System.out.print(label);
       String value = myKB.nextLine();
       try {
         return Integer.parseInt(value);
@@ -196,8 +190,9 @@ public class Ca_minimal_version {
     }
   }
 
-  public static double readDouble() {
+  public static double readDouble(String label) {
     while(true) {
+      System.out.print(label);
       String value = myKB.nextLine();
       try {
         return Double.parseDouble(value);
