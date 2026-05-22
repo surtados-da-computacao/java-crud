@@ -26,9 +26,8 @@ public class Ca_minimal_version {
       System.out.println("1 - Manage Services");
       System.out.println("x - Quit");
       System.out.println("....................");
-      System.out.print("Option: ");
 
-      option = keyboard.readString();
+      option = keyboard.readString("Option: ");
 
       switch (option) {
         case "1" -> serviceMenu.show();

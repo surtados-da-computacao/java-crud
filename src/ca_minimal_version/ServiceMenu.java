@@ -26,9 +26,8 @@ public class ServiceMenu {
       System.out.println("5 - Delete service by ID");
       System.out.println("x - Back to main menu");
       System.out.println("....................");
-      System.out.print("Option: ");
 
-      option = keyboard.readString();
+      option = keyboard.readString("Option: ");
 
       switch (option) {
         case "1" -> listAllServices();
@@ -61,8 +60,7 @@ public class ServiceMenu {
   }
 
   private void showOneServiceById() {
-    System.out.print("Service ID: ");
-    int serviceID = keyboard.readInt();
+    int serviceID = keyboard.readInt("Service ID: ");
 
     String sql = "SELECT * FROM service_details WHERE service_id = ?;";
 
@@ -90,10 +88,8 @@ public class ServiceMenu {
   }
 
   private void createNewService() {
-    System.out.print("Service name: ");
-    String serviceName = keyboard.readString();
-    System.out.print("Service charge: ");
-    double serviceCharge = keyboard.readDouble();
+    String serviceName = keyboard.readString("Service name: ");
+    double serviceCharge = keyboard.readDouble("Service charge: ");
 
     String sql = "INSERT INTO service_details (service_name, service_charge) VALUES (?, ?);";
 
@@ -110,10 +106,8 @@ public class ServiceMenu {
   }
 
   private void updateServiceNameById() {
-    System.out.print("Service ID: ");
-    int serviceId = keyboard.readInt();
-    System.out.print("Service name: ");
-    String serviceName = keyboard.readString();
+    int serviceId = keyboard.readInt("Service ID: ");
+    String serviceName = keyboard.readString("Service name: ");
 
     String sql = "UPDATE service_details SET service_name = ? WHERE service_id = ?";
 
@@ -130,8 +124,7 @@ public class ServiceMenu {
   }
 
   private void deleteServiceById() {
-    System.out.print("Service ID: ");
-    int serviceId = keyboard.readInt();
+    int serviceId = keyboard.readInt("Service ID: ");
 
     String sql = "DELETE FROM service_details WHERE service_id = ?";
 

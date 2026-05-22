@@ -6,13 +6,15 @@ public class Keyboard {
 
   private Scanner scanner = new Scanner(System.in);
 
-  public String readString() {
+  public String readString(String label) {
+    System.out.print(label);
     String value = scanner.nextLine();
     return value.trim();
   }
 
-  public int readInt() {
+  public int readInt(String label) {
     while (true) {
+      System.out.print(label);
       String value = scanner.nextLine();
       try {
         return Integer.parseInt(value);
@@ -22,8 +24,9 @@ public class Keyboard {
     }
   }
 
-  public double readDouble() {
+  public double readDouble(String label) {
     while (true) {
+      System.out.print(label);
       String value = scanner.nextLine();
       try {
         return Double.parseDouble(value);
